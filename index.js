@@ -13,15 +13,6 @@ const options = {
   all: true,
 };
 
-//TODO============================================
-/* set up a regex that cuts off the ass end of a web url
-  ie. https://www.fuckmyass.com/rightnow -> www.fuckmyass.com
-
-
-  for some reason checkURL cant check for websites with '/' after .<com>
-  /ballsack works on the fcc page
-*/
-
 // connect to mongoose
 try {
   mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -52,7 +43,7 @@ const ShortURL = new mongoose.model("short_url", shortSchema)
 app.post('/api/shorturl', async function(req, res){
   console.log(req.body.url)
 
-  // for the damn checkdns garbage -_-
+  // for the checkdns
   var format_url;
   var regex = /https:\/\/.+/ig
   if (req.body.url.match(regex)){
